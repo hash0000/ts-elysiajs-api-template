@@ -1,17 +1,12 @@
-import { jwt } from '@elysiajs/jwt';
-import { Elysia } from 'elysia';
+import Elysia from 'elysia';
+import { KyselyHelper } from './common/helper/kysely.helper';
 import { UserRouter } from './modules/user/router';
 
 async function app(): Promise<void> {
   const app = new Elysia();
   const port: number = Number(process.env.APP_PORT);
 
-  app.use(
-    jwt({
-      name: 'jwt',
-      secret: 'tesssst',
-    }),
-  );
+  await KyselyHelper(app);
 
   app.use(UserRouter);
 

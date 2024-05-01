@@ -1,11 +1,11 @@
-import { JWTPayloadSpec } from '@elysiajs/jwt';
-import Elysia, { TSchema, UnwrapSchema } from 'elysia';
+import Elysia from 'elysia';
+import { Kysely } from 'kysely';
+import { DB } from './kysely/db.type';
 
 export interface ElysiaApp extends Elysia {
   decorator: {
-    jwt: {
-      readonly sign: (morePayload: Record<string, string | number> & JWTPayloadSpec) => Promise<string>;
-      readonly verify: (jwt?: string) => Promise<false | (UnwrapSchema<TSchema, Record<string, string | number>> & JWTPayloadSpec)>;
+    decorator: {
+      kysely: Kysely<DB>;
     };
   };
 }

@@ -2,7 +2,9 @@
   "name": "ts-elysia-api-template",
   "version": "1.0.50",
   "scripts": {
-    "dev": "bun run --watch app/main.ts"
+    "dev": "bun run --watch app/main.ts",
+    "kysely-codegen": "npx kysely-codegen --out-file ./app/common/type/kysely/db.type.ts",
+    "run-migration-ts": "bun -r dotenv/config app/common/helper/runMigration.helper.ts dotenv_config_path=./.env"
   },
   "dependencies": {
     "@elysiajs/bearer": "^1.0.2",
