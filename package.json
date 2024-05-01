@@ -5,6 +5,8 @@
     "dev": "bun run --watch app/main.ts"
   },
   "dependencies": {
+    "@elysiajs/bearer": "^1.0.2",
+    "@elysiajs/jwt": "^1.0.2",
     "argon2": "^0.40.1",
     "dotenv": "^16.4.5",
     "elysia": "latest",
