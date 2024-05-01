@@ -1,8 +1,23 @@
-import { Elysia } from 'elysia';
+import { Elysia, t } from 'elysia';
 
-export function UserRouter(app): Elysia<any, any, any, any, any, any, any, any> {
-  return app.post('/login', function (test) {
-    test.set.status = 201;
-    return 'connect';
+export function UserRouter(app: Elysia) {
+  return app.group('/user', function (router) {
+    router.post(
+      '/login',
+      async function ({ set }) {
+        set.status = 323;
+        return {
+          data: 'hello',
+        };
+      },
+      {
+        body: t.Object({
+          login: t.String(),
+          password: t.String(),
+        }),
+      },
+    );
+
+    return router;
   });
 }
