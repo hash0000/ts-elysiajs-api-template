@@ -38,8 +38,6 @@ export async function KyselyHelper(elysia: Elysia): Promise<void> {
     });
     console.info(consoleColor.FG.GREEN, '[APP] Postgres: connection established');
 
-    elysia.decorate('kysely', db);
-
     kysely = db;
 
     elysia.onStop(async () => {

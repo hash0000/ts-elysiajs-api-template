@@ -1,6 +1,7 @@
 import jwt from '@elysiajs/jwt';
 import Elysia, { t } from 'elysia';
 import { HttpStatusCode } from '../../common/enums/httpStatusCode.enum';
+import { kysely } from '../../common/helper/kysely.helper';
 import * as service from './service';
 
 export function UserRouter(app: Elysia) {
@@ -16,7 +17,7 @@ export function UserRouter(app: Elysia) {
       router.post(
         '/login',
         async function (app) {
-          const serviceResponse = await service.login(app, app.body);
+          const serviceResponse = await service.login(kysely, app.body);
           app.set.status = serviceResponse.statusCode;
 
           if (serviceResponse.statusCode === HttpStatusCode.OK && serviceResponse?.data !== undefined) {
